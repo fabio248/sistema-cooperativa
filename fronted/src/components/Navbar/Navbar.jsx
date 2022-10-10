@@ -1,45 +1,113 @@
-import React from 'react'
-import { AppBar, Typography, Toolbar, Tabs, Tab, Button } from '@mui/material'
-import { Handshake } from '@mui/icons-material'
-import { minHeight } from '@mui/system'
+import {
+  AppBar,
+  Typography,
+  Toolbar,
+  Button,
+  Box,
+  useMediaQuery,
+  createTheme,
+} from '@mui/material'
+import { Handshake, Login } from '@mui/icons-material'
+import DrawerComp from './Drawer'
+
+export const navItems = ['Home', 'About', 'Contact Us']
 function Navbar() {
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 970,
+        lg: 1200,
+        xl: 1536,
+      },
+    },
+  })
+
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
     <>
       <AppBar sx={{ background: '#fff5ed', minHeight: '128px' }}>
         <Toolbar>
-          <Handshake
-            sx={{ color: '#16382c', marginTop: '40px', marginLeft: '20px' }}
-          />
-          <Typography sx={{ color: '#16382c', marginTop: '40px' }}>
-            COOPERATIVA
-          </Typography>
-          <Tabs sx={{ marginTop: '40px' }} value={2} indicatorColor='secondary'>
-            <Tab label='Home' textColor='#16382c' />
-            <Tab label='Service' textColor='#16382c' />
-            <Tab label='Contact us' textColor='#16382c' />
-          </Tabs>
-          <Tabs sx={{ marginLeft: 'auto', marginTop: '40px' }}>
-            <Button
+          <>
+            <Handshake
               sx={{
-                backgroundColor: '#16382c',
-                margin: '5px',
-                marginRight: '20px',
+                display: { md: 'flex', alignSelf: 'flex-start' },
+                color: '#16382c',
+                mr: 1,
+                marginTop: '53px',
+                marginLeft: '20px',
               }}
-              variant='contained'
-            >
-              Login
-            </Button>
-            <Button
+            />
+            <Typography
+              variant='h6'
+              noWrap
+              component='a'
+              href='/'
               sx={{
-                backgroundColor: '#ff7334',
-                margin: '5px',
-                marginRight: '50px',
+                mr: 2,
+                flexGrow: 1,
+                alignSelf: 'flex-start',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: '#16382c',
+                textDecoration: 'none',
+                marginTop: '45px',
+                fontSize: '1.5rem',
               }}
-              variant='contained'
             >
-              Sing Up
-            </Button>
-          </Tabs>
+              COOPERATIVA
+            </Typography>
+          </>
+
+          {isMatch ? (
+            <>
+              <DrawerComp />
+            </>
+          ) : (
+            <>
+              <Box
+                sx={{
+                  display: { xs: 'none', sm: 'block' },
+                  marginTop: '40px',
+                  marginLeft: '20px',
+                }}
+              >
+                {navItems.map((item) => (
+                  <Button
+                    key={item}
+                    sx={{ color: '#16382c', marginRight: '25px' }}
+                  >
+                    {item}
+                  </Button>
+                ))}
+              </Box>
+              <Box sx={{ marginLeft: 'auto', marginTop: '40px' }}>
+                <Button
+                  sx={{
+                    backgroundColor: '#16382c',
+                    margin: '5px',
+                    marginRight: '20px',
+                  }}
+                  variant='contained'
+                >
+                  <Login sx={{ marginRight: '5px' }} />
+                  Login
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: '#ff7334',
+                    margin: '5px',
+                    marginRight: '50px',
+                  }}
+                  variant='contained'
+                >
+                  Registrarse
+                </Button>
+              </Box>
+            </>
+          )}
         </Toolbar>
       </AppBar>
     </>
