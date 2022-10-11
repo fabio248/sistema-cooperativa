@@ -6,7 +6,6 @@ import {
   Box,
   useMediaQuery,
   createTheme,
-  Link,
 } from '@mui/material'
 import { Handshake, Login } from '@mui/icons-material'
 import DrawerComp from './Drawer'
@@ -105,6 +104,7 @@ function Navbar() {
                   }}
                   variant='contained'
                   href='/registrar'
+
                 >
                   Registrarse
                 </Button>
