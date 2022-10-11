@@ -1,18 +1,13 @@
-import React from 'react'
 import {
   AppBar,
   Typography,
   Toolbar,
-  Tabs,
-  Tab,
   Button,
   Box,
   useMediaQuery,
-  useTheme,
   createTheme,
 } from '@mui/material'
 import { Handshake, Login } from '@mui/icons-material'
-import { minHeight } from '@mui/system'
 import DrawerComp from './Drawer'
 
 export const navItems = ['Home', 'About', 'Contact Us']
@@ -91,13 +86,14 @@ function Navbar() {
               <Box sx={{ marginLeft: 'auto', marginTop: '40px' }}>
                 <Button
                   sx={{
-                    backgroundColor: '#16382c',
+                    background: '#16382c',
                     margin: '5px',
                     marginRight: '20px',
                   }}
                   variant='contained'
+                  href='/login'
                 >
-                  <Login sx={{ marginRight: '5px' }} />
+                  <Login sx={{ marginRight: '5px', color: '#fefefe' }} />
                   Login
                 </Button>
                 <Button
@@ -107,6 +103,8 @@ function Navbar() {
                     marginRight: '50px',
                   }}
                   variant='contained'
+                  href='/registrar'
+
                 >
                   Registrarse
                 </Button>
