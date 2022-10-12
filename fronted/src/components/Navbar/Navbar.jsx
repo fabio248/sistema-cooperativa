@@ -85,6 +85,7 @@ function Navbar() {
               </Box>
               <Box sx={{ marginLeft: 'auto', marginTop: '40px' }}>
                 <Button
+                  className='boton-ingreso'
                   sx={{
                     background: '#16382c',
                     margin: '5px',
@@ -97,6 +98,7 @@ function Navbar() {
                   Login
                 </Button>
                 <Button
+                  className='boton-ingreso'
                   sx={{
                     backgroundColor: '#ff7334',
                     margin: '5px',

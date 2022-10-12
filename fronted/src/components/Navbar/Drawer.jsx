@@ -20,7 +20,7 @@ const DrawerComp = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <List sx={{ background: '#fff5ed' }}>
+        <List sx={{ background: '#fff5ed', height: '100%' }}>
           {newNavItems.map((item, index) => (
             <ListItemButton onClick={() => setOpenDrawer(false)} key={index}>
               <ListItemIcon>
